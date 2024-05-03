@@ -1,0 +1,161 @@
+@import url("./styles/icons.css");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* UTILS */
+.padding {
+  padding: 0 20px;
+}
+
+body {
+  background-color: #171717;
+  color: white;
+
+  height: 100dvh;
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+header {
+  height: 5dvh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 900;
+  font-size: 20px;
+}
+
+.title {
+  color: rgb(255, 171, 255);
+
+  /* font-size: 35px;
+  letter-spacing: 20px; */
+  margin: 0;
+
+  background: -webkit-linear-gradient(
+    360deg,
+    rgb(213, 130, 255) 20%,
+    rgb(255, 255, 255)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  /* stop user selection */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.instruct-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px auto;
+  height: 5dvh;
+  max-width: 1200px;
+
+  /* stop user selection */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.instruct {
+  max-width: 1200px;
+  padding-bottom: 10px;
+
+  font-size: 16px;
+}
+
+.swap-btn {
+  /* background-color: plum; */
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 20px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swap-btn:hover {
+  background-color: plum;
+  color: black;
+}
+
+.swap-btn:active {
+  background-color: #9c9c9c;
+}
+
+/* =====TEXTAREA  */
+
+.io-box-container {
+  width: 100%;
+  max-width: 1200px;
+  height: 85dvh;
+  margin: 0 auto;
+  /* margin-top: 10px; */
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left,
+.right {
+  width: 49%;
+}
+
+textarea {
+  height: 85dvh;
+  outline: none;
+  background-color: #171717;
+  color: white;
+  padding: 20px 20px;
+
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-weight: 900;
+  font-size: 20px;
+  letter-spacing: 5px;
+  border: 3px solid rgba(76, 73, 73, 0.558);
+  border-radius: 10px;
+
+  width: 100%;
+
+  resize: none;
+}
+
+textarea:focus {
+  border: 3px plum solid;
+}
+
+textarea::placeholder {
+  color: #9c9c9c;
+}
+
+/* =====MOBILE DEVICES CSS */
+@media (max-width: 600px) {
+  .io-box-container {
+    flex-direction: column;
+    /* justify-content: flex-start; */
+  }
+
+  .left,
+  .right {
+    width: 100%;
+  }
+
+  .left textarea {
+    height: 10dvh;
+  }
+
+  .right textarea {
+    height: 75dvh;
+  }
+}

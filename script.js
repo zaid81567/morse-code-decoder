@@ -207,14 +207,16 @@ function isClearedBySelection(element) {
 }
 
 function getKey(input_el) {
-  console.log(input_el);
+  // console.log(input_el);
   let str = input_el.value;
-  // console.log(prev_field_len, str.length);
+  console.log(prev_field_len, str.length);
 
   if (prev_field_len > str.length) {
     // console.log("Returning Backspace");
     if (input_el.id == "morse") {
       prev_field_len = str.length - 1;
+    } else {
+      prev_field_len -= 1;
     }
     return "Backspace";
   }

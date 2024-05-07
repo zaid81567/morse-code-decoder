@@ -152,7 +152,7 @@ morse_el.addEventListener("input", (event) => {
     let engArray = eng_el.value.trim().split("");
     engArray.pop();
     if (engArray.length > 0) {
-      eng_el.value = engArray.join("") + " ";
+      eng_el.value = engArray.join("");
     } else {
       eng_el.value = "";
     }

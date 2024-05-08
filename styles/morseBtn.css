@@ -31,6 +31,11 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  /* stop user selection */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .morse-btn:active {
@@ -55,6 +60,11 @@
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  /* stop user selection */
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
 }
 
 .other-btn:active {

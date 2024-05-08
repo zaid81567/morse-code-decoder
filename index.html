@@ -41,7 +41,25 @@
   </head>
   <body>
     <header>
+      <!-- MODEL BOX -->
+
       <p class="title">Morse Code Decoder</p>
+
+      <span class="git-icon-btn" id="git-icon-btn"></span>
+      <div class="model-box-container" id="model-box-container">
+        <div class="model-box" id="model-box">
+          <a href="https://github.com/zaid81567" target="_blank"
+            ><span class="git-icon"></span
+          ></a>
+
+          <div class="creator">Md Zaid</div>
+          <div class="cta">
+            <a href="https://github.com/zaid81567/PRODIGY_WD_02" target="_blank"
+              >Repository</a
+            >
+          </div>
+        </div>
+      </div>
     </header>
     <div class="instruct-container padding">
       <p class="instruct">Input Message to Translate</p>
@@ -52,11 +70,48 @@
     <div class="io-box-container padding" id="io-box-container">
       <div class="left">
         <!-- <p class="box-title">English</p> -->
-        <textarea id="eng" class="eng" placeholder="SOS"></textarea>
+        <textarea
+          id="eng"
+          class="eng"
+          placeholder="SOS"
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        ></textarea>
       </div>
       <div class="right">
         <!-- <p class="box-title">Morse</p> -->
-        <textarea id="morse" class="morse" placeholder="... --- ..."></textarea>
+        <textarea
+          id="morse"
+          class="morse"
+          placeholder="... --- ..."
+          autocomplete="off"
+          autocorrect="off"
+          autocapitalize="off"
+          spellcheck="false"
+        ></textarea>
+      </div>
+    </div>
+    <div class="morse-btn-container padding" id="virtual-btn">
+      <div class="main-btns">
+        <div class="dit-btn morse-btn dit" id="dit-btn">
+          <span class="dit-icon dit"></span>
+        </div>
+        <div class="dat-btn morse-btn dat" id="dat-btn">
+          <span class="dat-icon dat"></span>
+        </div>
+      </div>
+      <div class="other-btns">
+        <div class="other-btn space-btn space" id="space-btn">
+          <span class="space-icon space"></span>
+        </div>
+        <div class="other-btn forward-slash-btn forward-slash" id="forward-slash-btn">
+          <span class="forward-slash-icon forward-slash"></span>
+        </div>
+        <div class="other-btn erase-btn erase" id="erase-btn">
+          <span class="erase-icon erase"></span>
+        </div>
       </div>
     </div>
   </body>

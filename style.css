@@ -1,4 +1,6 @@
 @import url("./styles/icons.css");
+@import url("./styles/model-box.css");
+@import url("./styles/morseBtn.css");
 
 * {
   padding: 0;
@@ -42,6 +44,7 @@ header {
     rgb(255, 255, 255)
   );
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 
   /* stop user selection */
@@ -100,10 +103,9 @@ header {
   max-width: 1200px;
   height: 85dvh;
   margin: 0 auto;
-  /* margin-top: 10px; */
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; 
   align-items: center;
 }
 
@@ -157,6 +159,7 @@ textarea::placeholder {
 
   .right textarea {
     height: 75dvh;
+    /* height: 55dvh; */
   }
 }
 

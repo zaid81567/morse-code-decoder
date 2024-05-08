@@ -1,0 +1,72 @@
+
+.morse-btn-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+    margin-top: 15px;
+
+    display: none;
+}
+
+/* MAIN BTNS  */
+.main-btns{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+}
+
+.morse-btn{
+    background-color: rgb(58, 39, 64);
+    height: 60px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.morse-btn:active{
+    background-color: rgb(44, 38, 45);
+}
+
+/* OTHER BTNS  */
+.other-btns{
+    display: flex;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: .6rem;
+}
+
+.other-btn{
+    background-color: rgb(58, 39, 64);
+    height: 60px;
+    width: 100%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.other-btn:active{
+    background-color: rgb(44, 38, 45);
+}
+
+
+.space-btn{
+    font-size: 30px;
+}
+
+.erase-btn{
+    font-size: 30px;
+}
+
+.forward-slash-icon{
+    font-size: 30px;
+}
+

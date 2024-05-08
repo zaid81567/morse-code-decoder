@@ -3,8 +3,14 @@ const morse_el = document.getElementById("morse");
 const eng_el = document.getElementById("eng");
 const swap_btn = document.getElementById("swap-btn");
 const io_box_container_el = document.getElementById("io-box-container");
+const virtual_btns_el = document.getElementById("virtual-btn");
 let prev_field_len = 0;
 morse_el.disabled = true;
+// model box
+const git_btn = document.getElementById("git-icon-btn");
+const git_model_container_el = document.getElementById("model-box-container");
+let isGitHidden = true;
+let hasVirtualMorseBtnTurnedOn = false;
 
 //record of translated morse
 let translatedMorse = [];
@@ -112,6 +118,85 @@ function renderMorse() {
 }
 
 //=====MORSE -> ENG===================================
+virtual_btns_el.addEventListener("click", (event) => {
+  let keyPressed = null;
+  if (event.target.classList.contains("dit")) {
+    // console.log("dit");
+    keyPressed = ".";
+  } else if (event.target.classList.contains("dat")) {
+    // console.log("dat");
+    keyPressed = "-";
+  } else if (event.target.classList.contains("space")) {
+    // console.log("space");
+    keyPressed = "Space";
+  } else if (event.target.classList.contains("forward-slash")) {
+    keyPressed = "/";
+    // console.log("erase");
+  } else if (event.target.classList.contains("erase")) {
+    keyPressed = "Backspace";
+    // console.log("erase");
+  }
+
+  // console.log(keyPressed);
+
+  if (keyPressed != null) {
+    console.log("Keypressed: " + keyPressed);
+    if (keyPressed == "." || keyPressed == "-") {
+      morse_el.value += keyPressed;
+      single_morse_code += keyPressed;
+      console.log("single morse code: " + single_morse_code);
+    }
+
+    //populating morseToAplha Object
+    if (Object.keys(morseToAlpha).length == 0) {
+      for (let letter in aplhaToMorse) {
+        let morseVal = aplhaToMorse[letter];
+        morseToAlpha[morseVal] = letter;
+      }
+    }
+
+    //handle forwardslash
+    if (keyPressed == "/") {
+      console.log("in if of /");
+      eng_el.value += " ";
+      morse_el.value += "/";
+      return;
+    }
+
+    //handle backspace
+    if (keyPressed === "Backspace") {
+      //erase morse side
+      let morseArray = morse_el.value.trim().split(" ");
+      //check if ereasing morse is an alphabet then don't erase eng part since that's not a part of morse
+      if (morseArray[morseArray.length - 1].match(/^[0-9a-z/]+$/)) {
+        console.log("THAT WAS NOT MORSE -> NOT ERASING ENG PART");
+        return;
+      }
+      morseArray.pop();
+      morse_el.value = morseArray.join(" ") + " ";
+
+      //erase eng side
+      let engArray = eng_el.value.trim().split("");
+      engArray.pop();
+      if (engArray.length > 0) {
+        eng_el.value = engArray.join("");
+      } else {
+        eng_el.value = "";
+      }
+    }
+
+    //handle space
+    if (keyPressed === " " || keyPressed == "Space") {
+      if (morseToAlpha[single_morse_code]) {
+        eng_el.value += morseToAlpha[single_morse_code];
+        single_morse_code = "";
+        morse_el.value += " ";
+      } else {
+        console.log("no match");
+      }
+    }
+  }
+});
 morse_el.addEventListener("input", (event) => {
   // if (event.key == "." || event.key == "-") {
   //   single_morse_code += event.key;
@@ -171,17 +256,23 @@ morse_el.addEventListener("input", (event) => {
 
 //=====HANDLE SWAP BTN================================
 swap_btn.addEventListener("click", (event) => {
+  // morse -> eng
   if (morse_el.disabled) {
     morse_el.disabled = false;
     eng_el.disabled = true;
     if (window.innerWidth <= 600) {
       io_box_container_el.style.flexDirection = "column-reverse";
+      io_box_container_el.style.height = "65dvh";
       morse_el.style.height = "10dvh";
-      eng_el.style.height = "75dvh";
+      eng_el.style.height = "55dvh";
+
+      virtual_btns_el.style.display = "flex";
     } else {
       io_box_container_el.style.flexDirection = "row-reverse";
+      virtual_btns_el.style.display = "none";
     }
   } else {
+    // eng -> morse
     morse_el.disabled = true;
     eng_el.disabled = false;
 
@@ -189,8 +280,10 @@ swap_btn.addEventListener("click", (event) => {
       io_box_container_el.style.flexDirection = "column";
       eng_el.style.height = "10dvh";
       morse_el.style.height = "75dvh";
+      virtual_btns_el.style.display = "none";
     } else {
       io_box_container_el.style.flexDirection = "row";
+      virtual_btns_el.style.display = "none";
     }
   }
 
@@ -227,3 +320,19 @@ function getKey(input_el) {
   // console.log("Character: '" + currentChar + "'");
   return currentChar;
 }
+
+//=======GIT_MODEL_EVENT_HANDLERS===================================
+
+git_btn.addEventListener("click", () => {
+  if (isGitHidden) {
+    git_model_container_el.style.display = "inherit";
+  }
+});
+
+git_model_container_el.addEventListener("click", () => {
+  git_model_container_el.style.display = "none";
+});
+
+document.getElementById("model-box").addEventListener("click", (event) => {
+  event.stopPropagation();
+});

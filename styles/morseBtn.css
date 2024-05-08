@@ -90,7 +90,20 @@
   user-select: none; /* Standard syntax */
 }
 
-::selection {
+/* ::selection {
   color: none;
   background: none;
+} */
+
+/* Disable tap/click effect on buttons */
+.morse-btn,
+.other-btn {
+  -webkit-tap-highlight-color: transparent; /* Disable tap highlight in iOS */
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* For Android */
+  touch-action: manipulation; /* Improve responsiveness and disable double tap zoom in some browsers */
+}
+
+.morse-btn:focus,
+.other-btn:focus {
+  outline: none;
 }
